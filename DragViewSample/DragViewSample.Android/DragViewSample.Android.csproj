@@ -111,6 +111,11 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\close.png" />
+    <AndroidResource Include="Resources\drawable\monkey1.png" />
+    <AndroidResource Include="Resources\drawable\monkey2.png" />
+    <AndroidResource Include="Resources\drawable\monkey3.png" />
+    <AndroidResource Include="Resources\drawable\monkey4.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -122,7 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DragViewSample\DragViewSample.csproj">
-      <Project>{08cd1be1-6b68-484a-905f-20c61f0c0943}</Project>
+      <Project>{99DD4877-CC65-488B-A097-94DC109E6DAD}</Project>
       <Name>DragViewSample</Name>
     </ProjectReference>
   </ItemGroup>

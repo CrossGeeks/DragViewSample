@@ -60,8 +60,6 @@ namespace DragViewSample.iOS.Renderers
         {
             base.OnElementChanged(e);
 
-            
-          
             if(e.OldElement!=null)
             {
                 RemoveGestureRecognizer(panGesture);

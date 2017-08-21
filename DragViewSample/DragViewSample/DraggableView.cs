@@ -62,7 +62,7 @@ namespace DragViewSample
         {
             IsDragging = false;
             DragEnd(this, default(EventArgs));
-           
         }
+
     }
 }

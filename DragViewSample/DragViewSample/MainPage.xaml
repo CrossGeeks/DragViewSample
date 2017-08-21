@@ -1,42 +1,46 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DragViewSample"
              x:Class="DragViewSample.MainPage">
-    <StackLayout Padding="0,20,0,0">
-        <ContentView  VerticalOptions="FillAndExpand">
-            <StackLayout>
-                <local:DraggableView  VerticalOptions="Center"  HorizontalOptions="Center" DragMode="Touch" DragDirection="Horizontal" >
-                    <local:DraggableView.Content>
-                        <StackLayout BackgroundColor="LightSteelBlue" >
-
-                            <Image Source="icon"/>
-                            <Label Text="Hello Drag" TextColor="Aqua"/>
-                        </StackLayout>
-                    </local:DraggableView.Content>
-                </local:DraggableView>
-                <local:DraggableView VerticalOptions="Center" HorizontalOptions="Center" DragMode="Touch" >
-                    <local:DraggableView.Content>
-                        <StackLayout BackgroundColor="DarkSlateGray" >
-                            <Label Text="Drag Me" TextColor="White" FontAttributes="Bold" FontSize="Large"></Label>
-                        </StackLayout>
-                    </local:DraggableView.Content>
-                </local:DraggableView>
-                <local:DraggableView VerticalOptions="Center" HorizontalOptions="Center" DragDirection="Vertical">
-                    <local:DraggableView.Content>
-                        <Frame CornerRadius="25" BackgroundColor="Aquamarine" HeightRequest="80" WidthRequest="80"></Frame>
-                    </local:DraggableView.Content>
-                </local:DraggableView>
-                <local:DraggableView VerticalOptions="Center" HorizontalOptions="Center">
-                    <local:DraggableView.Content>
-                        <BoxView BackgroundColor="Chocolate" HeightRequest="80" WidthRequest="80"></BoxView>
-                    </local:DraggableView.Content>
-                </local:DraggableView>
-            </StackLayout>
-
-        </ContentView>
-    </StackLayout>
-    
-	
-
+      <AbsoluteLayout>
+           <ListView  AbsoluteLayout.LayoutFlags="All"
+                      AbsoluteLayout.LayoutBounds="0,0,1,1"
+                      SeparatorColor="Transparent" x:Name="list"
+                      Margin="0,20,0,0" 
+                      RowHeight="180"  ItemSelected="Handle_ItemSelected"
+                      ItemsSource="{Binding Items}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout VerticalOptions="Center">
+                                    <Image HeightRequest="140" Aspect="AspectFill" Source="{Binding Image}" HorizontalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout AbsoluteLayout.LayoutFlags="All" x:Name="dragLayout"
+                          AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="false"
+                          VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+             <Image Source="close" Margin="10" HorizontalOptions="Start">
+                     <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCloseTapped" />
+                      </Image.GestureRecognizers>
+              </Image>
+              <local:DraggableView  VerticalOptions="CenterAndExpand"
+                          DragMode="LongPress" DragDirection="All" >
+                        <local:DraggableView.Content>
+                                 <Image x:Name="image"  
+                                         Source="{Binding ItemSelected.Image}" 
+                                         Aspect="AspectFill" 
+                                         HorizontalOptions="CenterAndExpand" 
+                                         HeightRequest="200" 
+                                         Margin="10,0" 
+                                         VerticalOptions="CenterAndExpand"/>
+                        </local:DraggableView.Content>
+                 </local:DraggableView>
+             </StackLayout>
+     </AbsoluteLayout>
 </ContentPage>

@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386, x86_64</MtouchArch>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -115,6 +115,11 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\close.png" />
+    <BundleResource Include="Resources\monkey1.png" />
+    <BundleResource Include="Resources\monkey2.png" />
+    <BundleResource Include="Resources\monkey3.png" />
+    <BundleResource Include="Resources\monkey4.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -136,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DragViewSample\DragViewSample.csproj">
-      <Project>{08cd1be1-6b68-484a-905f-20c61f0c0943}</Project>
+      <Project>{99DD4877-CC65-488B-A097-94DC109E6DAD}</Project>
       <Name>DragViewSample</Name>
     </ProjectReference>
   </ItemGroup>
