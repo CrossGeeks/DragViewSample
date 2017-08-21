@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DragViewSample"
+             x:Class="DragViewSample.MainPage">
+    <StackLayout Padding="0,20,0,0">
+        <ContentView  VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <local:DraggableView  VerticalOptions="Center"  HorizontalOptions="Center" DragMode="Touch" DragDirection="Horizontal" >
+                    <local:DraggableView.Content>
+                        <StackLayout BackgroundColor="LightSteelBlue" >
+
+                            <Image Source="icon"/>
+                            <Label Text="Hello Drag" TextColor="Aqua"/>
+                        </StackLayout>
+                    </local:DraggableView.Content>
+                </local:DraggableView>
+                <local:DraggableView VerticalOptions="Center" HorizontalOptions="Center" DragMode="Touch" >
+                    <local:DraggableView.Content>
+                        <StackLayout BackgroundColor="DarkSlateGray" >
+                            <Label Text="Drag Me" TextColor="White" FontAttributes="Bold" FontSize="Large"></Label>
+                        </StackLayout>
+                    </local:DraggableView.Content>
+                </local:DraggableView>
+                <local:DraggableView VerticalOptions="Center" HorizontalOptions="Center" DragDirection="Vertical">
+                    <local:DraggableView.Content>
+                        <Frame CornerRadius="25" BackgroundColor="Aquamarine" HeightRequest="80" WidthRequest="80"></Frame>
+                    </local:DraggableView.Content>
+                </local:DraggableView>
+                <local:DraggableView VerticalOptions="Center" HorizontalOptions="Center">
+                    <local:DraggableView.Content>
+                        <BoxView BackgroundColor="Chocolate" HeightRequest="80" WidthRequest="80"></BoxView>
+                    </local:DraggableView.Content>
+                </local:DraggableView>
+            </StackLayout>
+
+        </ContentView>
+    </StackLayout>
+    
+	
+
+</ContentPage>
