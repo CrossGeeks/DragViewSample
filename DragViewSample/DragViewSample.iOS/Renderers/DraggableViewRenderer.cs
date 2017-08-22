@@ -19,9 +19,11 @@ namespace DragViewSample.iOS.Renderers
     public class DraggableViewRenderer : VisualElementRenderer<View>
     {
         bool longPress = false;
+        bool firstTime = true;
         double lastTimeStamp = 0f;
         UIPanGestureRecognizer panGesture;
         CGPoint lastLocation;
+        CGPoint originalPosition;
         UIGestureRecognizer.Token panGestureToken;
         void DetectPan()
         {
@@ -31,6 +33,11 @@ namespace DragViewSample.iOS.Renderers
                 if (panGesture.State == UIGestureRecognizerState.Began)
                 {
                     dragView.DragStarted();
+                    if(firstTime)
+                    {
+                        originalPosition = Center;
+                        firstTime = false;
+                    }
                 }
 
                 CGPoint translation = panGesture.TranslationInView(Superview);
@@ -66,17 +73,30 @@ namespace DragViewSample.iOS.Renderers
                 panGesture.RemoveTarget(panGestureToken);
             }
             if (e.NewElement != null)
-            { 
+            {
+                var dragView = Element as DraggableView;
                 panGesture = new UIPanGestureRecognizer();
                 panGestureToken =panGesture.AddTarget(DetectPan);
                 AddGestureRecognizer(panGesture);
-               
+
+
+                dragView.RestorePositionCommand = new Command(() =>
+                {
+                    if(!firstTime)
+                    {
+
+                        Center = originalPosition;
+                    }
+                });
+
             }
           
         }
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            var dragView = Element as DraggableView;
             base.OnElementPropertyChanged(sender, e);
+            
         }
 
         public override void TouchesBegan(NSSet touches, UIEvent evt)

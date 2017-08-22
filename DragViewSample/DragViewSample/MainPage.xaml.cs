@@ -9,6 +9,7 @@ namespace DragViewSample
 {
     public partial class MainPage : ContentPage
     {
+   
         public MainPage()
         {
             InitializeComponent();
@@ -20,9 +21,27 @@ namespace DragViewSample
         void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null) return;
-
-            image.Source = (e.SelectedItem as Monkey).Image;
+            var monkey = e.SelectedItem as Monkey;
+            image.Source = monkey.Image;
+            switch(monkey.Name)
+            {
+                case "Marino":
+                    dragView.DragMode = DragMode.LongPress;
+                    dragView.DragDirection = DragDirectionType.Vertical;
+                    break;
+                case "Carlos":
+                    dragView.DragMode = DragMode.Touch;
+                    dragView.DragDirection = DragDirectionType.Horizontal;
+                    break;
+                default:
+                    dragView.DragMode = DragMode.LongPress;
+                    dragView.DragDirection = DragDirectionType.All;
+                    break;
+            }
+            dragView.RestorePositionCommand.Execute(null);
+     
             dragLayout.IsVisible = true;
+            
         }
 
         void OnCloseTapped(object sender, System.EventArgs e)

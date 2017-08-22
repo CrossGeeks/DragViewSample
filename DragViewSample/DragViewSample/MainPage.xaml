@@ -29,7 +29,7 @@
                         <TapGestureRecognizer Tapped="OnCloseTapped" />
                       </Image.GestureRecognizers>
               </Image>
-              <local:DraggableView  VerticalOptions="CenterAndExpand"
+              <local:DraggableView x:Name="dragView"  VerticalOptions="CenterAndExpand"
                           DragMode="LongPress" DragDirection="All" >
                         <local:DraggableView.Content>
                                  <Image x:Name="image"  
