@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AView = Android.Views;
-using Android.App;
-using Android.Content;
-using Android.OS;
+﻿using AView = Android.Views;
 using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using DragViewSample.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using DragViewSample;
 using System.ComponentModel;
-using Android.Graphics;
-using Android.Views.Animations;
 
 [assembly: ExportRenderer(typeof(DraggableView), typeof(DraggableViewRenderer))]
 namespace DragViewSample.Droid.Renderers
@@ -142,19 +132,7 @@ namespace DragViewSample.Droid.Renderers
             BringToFront();
             return true;
         }
-        bool IsViewOverlapping(AView.View view)
-        {
-            
-            int[] location = new int[2];
-            this.GetLocationInWindow(location);
-            Rect rect1 = new Rect(location[0], location[1], location[0] + this.Width, location[1] + this.Height);
-
-            view.GetLocationInWindow(location);
-            Rect rect2 = new Rect(location[0], location[1], location[0] + view.Width, location[1] + view.Height);
-
-           return rect1.Intersect(rect2);
-
-        }
+        
     }
     
 

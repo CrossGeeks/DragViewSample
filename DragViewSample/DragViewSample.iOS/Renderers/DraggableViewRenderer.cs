@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
 using Xamarin.Forms;
 using DragViewSample;
@@ -114,9 +109,6 @@ namespace DragViewSample.iOS.Renderers
             }
             base.TouchesMoved(touches, evt);
         }
-        bool IsViewOverlapping(UIView view)
-        {
-            return Frame.IntersectsWith(view.Frame);
-        }
+       
     }
 }
